@@ -1,4 +1,4 @@
-module github.com/rocket-pool/rocketpool-go
+module github.com/RedDuck-Software/poolsea-go
 
 go 1.19
 
