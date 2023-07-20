@@ -3,13 +3,13 @@ package node
 import (
 	"testing"
 
-	"github.com/rocket-pool/rocketpool-go/minipool"
-	"github.com/rocket-pool/rocketpool-go/node"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/minipool"
+	"github.com/RedDuck-Software/poolsea-go/node"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
-	minipoolutils "github.com/rocket-pool/rocketpool-go/tests/testutils/minipool"
-	nodeutils "github.com/rocket-pool/rocketpool-go/tests/testutils/node"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
+	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
 )
 
 func TestDeposit(t *testing.T) {

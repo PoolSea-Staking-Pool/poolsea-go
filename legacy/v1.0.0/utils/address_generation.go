@@ -5,12 +5,12 @@ import (
 	"math/big"
 	"sync"
 
+	"github.com/RedDuck-Software/poolsea-go/legacy/v1.0.0/minipool"
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
+	rptypes "github.com/RedDuck-Software/poolsea-go/types"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/rocket-pool/rocketpool-go/legacy/v1.0.0/minipool"
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
-	rptypes "github.com/rocket-pool/rocketpool-go/types"
 )
 
 // Combine a node's address and a salt to retreive a new salt compatible with depositing

@@ -5,18 +5,18 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/rocket-pool/rocketpool-go/deposit"
-	"github.com/rocket-pool/rocketpool-go/minipool"
-	"github.com/rocket-pool/rocketpool-go/node"
-	"github.com/rocket-pool/rocketpool-go/settings/protocol"
-	"github.com/rocket-pool/rocketpool-go/settings/trustednode"
-	"github.com/rocket-pool/rocketpool-go/tokens"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/deposit"
+	"github.com/RedDuck-Software/poolsea-go/minipool"
+	"github.com/RedDuck-Software/poolsea-go/node"
+	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
+	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/tokens"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
-	minipoolutils "github.com/rocket-pool/rocketpool-go/tests/testutils/minipool"
-	nodeutils "github.com/rocket-pool/rocketpool-go/tests/testutils/node"
-	rplutils "github.com/rocket-pool/rocketpool-go/tests/testutils/tokens/rpl"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
+	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	rplutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/rpl"
 )
 
 func TestStakeRPL(t *testing.T) {

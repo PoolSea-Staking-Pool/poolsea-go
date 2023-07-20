@@ -3,10 +3,10 @@ package protocol
 import (
 	"testing"
 
-	"github.com/rocket-pool/rocketpool-go/settings/protocol"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
 )
 
 func TestAuctionSettings(t *testing.T) {

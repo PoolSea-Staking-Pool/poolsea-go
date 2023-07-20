@@ -3,12 +3,12 @@ package trustednode
 import (
 	"testing"
 
-	"github.com/rocket-pool/rocketpool-go/settings/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/accounts"
-	daoutils "github.com/rocket-pool/rocketpool-go/tests/testutils/dao"
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
-	nodeutils "github.com/rocket-pool/rocketpool-go/tests/testutils/node"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
+	daoutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/dao"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
 )
 
 func TestBootstrapProposalsSettings(t *testing.T) {

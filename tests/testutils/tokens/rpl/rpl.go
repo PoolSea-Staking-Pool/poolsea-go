@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
-	"github.com/rocket-pool/rocketpool-go/tokens"
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
+	"github.com/RedDuck-Software/poolsea-go/tokens"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/accounts"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
 )
 
 // Mint an amount of RPL to an account

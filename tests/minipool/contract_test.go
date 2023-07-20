@@ -7,23 +7,23 @@ import (
 	"math/big"
 	"testing"
 
+	trustednodedao "github.com/RedDuck-Software/poolsea-go/dao/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/utils"
 	"github.com/ethereum/go-ethereum/common"
-	trustednodedao "github.com/rocket-pool/rocketpool-go/dao/trustednode"
-	"github.com/rocket-pool/rocketpool-go/settings/trustednode"
-	"github.com/rocket-pool/rocketpool-go/utils"
 
-	"github.com/rocket-pool/rocketpool-go/deposit"
-	"github.com/rocket-pool/rocketpool-go/minipool"
-	"github.com/rocket-pool/rocketpool-go/network"
-	"github.com/rocket-pool/rocketpool-go/node"
-	"github.com/rocket-pool/rocketpool-go/tokens"
-	rptypes "github.com/rocket-pool/rocketpool-go/types"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/deposit"
+	"github.com/RedDuck-Software/poolsea-go/minipool"
+	"github.com/RedDuck-Software/poolsea-go/network"
+	"github.com/RedDuck-Software/poolsea-go/node"
+	"github.com/RedDuck-Software/poolsea-go/tokens"
+	rptypes "github.com/RedDuck-Software/poolsea-go/types"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
-	minipoolutils "github.com/rocket-pool/rocketpool-go/tests/testutils/minipool"
-	nodeutils "github.com/rocket-pool/rocketpool-go/tests/testutils/node"
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/validator"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
+	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/validator"
 )
 
 func TestDetails(t *testing.T) {

@@ -7,17 +7,17 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/rocket-pool/rocketpool-go/dao"
-	trustednodedao "github.com/rocket-pool/rocketpool-go/dao/trustednode"
-	"github.com/rocket-pool/rocketpool-go/node"
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
-	trustednodesettings "github.com/rocket-pool/rocketpool-go/settings/trustednode"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/dao"
+	trustednodedao "github.com/RedDuck-Software/poolsea-go/dao/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/node"
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
+	trustednodesettings "github.com/RedDuck-Software/poolsea-go/settings/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/accounts"
-	daoutils "github.com/rocket-pool/rocketpool-go/tests/testutils/dao"
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
-	nodeutils "github.com/rocket-pool/rocketpool-go/tests/testutils/node"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
+	daoutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/dao"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
 )
 
 func TestProposeInviteMember(t *testing.T) {

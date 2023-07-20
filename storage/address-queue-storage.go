@@ -5,9 +5,9 @@ import (
 	"math/big"
 	"sync"
 
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
 )
 
 // low-level address queue storage interface. Currently only used for the minipool queue.

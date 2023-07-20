@@ -5,9 +5,9 @@ import (
 	"math/big"
 	"sync"
 
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
 )
 
 // Check if the given node has already claimed rewards for the given interval

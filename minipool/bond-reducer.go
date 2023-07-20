@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
 )
 
 // Estimate the gas required to vote to cancel a minipool's bond reduction

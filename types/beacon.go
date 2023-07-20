@@ -5,7 +5,7 @@ import (
 
 	"encoding/hex"
 
-	"github.com/rocket-pool/rocketpool-go/utils/json"
+	"github.com/RedDuck-Software/poolsea-go/utils/json"
 )
 
 // Validator pubkey

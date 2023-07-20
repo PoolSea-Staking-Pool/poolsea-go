@@ -6,10 +6,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/rocket-pool/rocketpool-go/node"
-	"github.com/rocket-pool/rocketpool-go/storage"
+	"github.com/RedDuck-Software/poolsea-go/node"
+	"github.com/RedDuck-Software/poolsea-go/storage"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
 )
 
 func TestRegisterNode(t *testing.T) {

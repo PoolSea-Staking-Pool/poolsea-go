@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rocket-pool/rocketpool-go/settings/protocol"
+	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
 )
 
 func TestInflationSettings(t *testing.T) {

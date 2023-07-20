@@ -12,7 +12,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/rocket-pool/rocketpool-go/contracts"
+	"github.com/RedDuck-Software/poolsea-go/contracts"
 )
 
 // Cache settings

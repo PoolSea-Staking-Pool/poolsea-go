@@ -4,17 +4,17 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/rocket-pool/rocketpool-go/settings/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
 
-	"github.com/rocket-pool/rocketpool-go/auction"
-	"github.com/rocket-pool/rocketpool-go/network"
-	"github.com/rocket-pool/rocketpool-go/settings/protocol"
-	"github.com/rocket-pool/rocketpool-go/tokens"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/auction"
+	"github.com/RedDuck-Software/poolsea-go/network"
+	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
+	"github.com/RedDuck-Software/poolsea-go/tokens"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
 
-	auctionutils "github.com/rocket-pool/rocketpool-go/tests/testutils/auction"
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
-	nodeutils "github.com/rocket-pool/rocketpool-go/tests/testutils/node"
+	auctionutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/auction"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
 )
 
 func TestAuctionDetails(t *testing.T) {

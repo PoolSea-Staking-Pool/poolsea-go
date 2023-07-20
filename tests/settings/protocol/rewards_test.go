@@ -3,10 +3,10 @@ package protocol
 import (
 	"testing"
 
-	protocoldao "github.com/rocket-pool/rocketpool-go/dao/protocol"
-	protocolsettings "github.com/rocket-pool/rocketpool-go/settings/protocol"
+	protocoldao "github.com/RedDuck-Software/poolsea-go/dao/protocol"
+	protocolsettings "github.com/RedDuck-Software/poolsea-go/settings/protocol"
 
-	"github.com/rocket-pool/rocketpool-go/tests/testutils/evm"
+	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
 )
 
 func TestRewardsSettings(t *testing.T) {

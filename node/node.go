@@ -8,18 +8,18 @@ import (
 	"sync"
 	"time"
 
-	"github.com/rocket-pool/rocketpool-go/dao/trustednode"
-	"github.com/rocket-pool/rocketpool-go/settings/protocol"
+	"github.com/RedDuck-Software/poolsea-go/dao/trustednode"
+	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
 	"gonum.org/v1/gonum/mathext"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/rocket-pool/rocketpool-go/rocketpool"
-	"github.com/rocket-pool/rocketpool-go/storage"
-	"github.com/rocket-pool/rocketpool-go/utils/eth"
-	"github.com/rocket-pool/rocketpool-go/utils/strings"
+	"github.com/RedDuck-Software/poolsea-go/rocketpool"
+	"github.com/RedDuck-Software/poolsea-go/storage"
+	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/RedDuck-Software/poolsea-go/utils/strings"
 )
 
 // Settings
