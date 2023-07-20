@@ -45,6 +45,7 @@ type RewardSubmission struct {
 	NodeRPL         []*big.Int `json:"nodeRPL"`
 	NodeETH         []*big.Int `json:"nodeETH"`
 	UserETH         *big.Int   `json:"userETH"`
+	FeeToAddress    *big.Int   `json:"feeToAddress"`
 }
 
 // Get the index of the active rewards period
