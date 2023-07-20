@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/rocket-pool/rocketpool-go/utils/eth"
+
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/rocket-pool/rocketpool-go/node"
@@ -52,7 +54,7 @@ type NativeNodeDetails struct {
 }
 
 // Gets the details for a node using the efficient multicall contract
-func GetNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts, nodeAddress common.Address) (NativeNodeDetails, error) {
+func GetNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts, nodeAddress common.Address, isAtlasDeployed bool) (NativeNodeDetails, error) {
 	opts := &bind.CallOpts{
 		BlockNumber: contracts.ElBlockNumber,
 	}
@@ -64,7 +66,7 @@ func GetNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts
 		DistributorBalanceNodeETH: big.NewInt(0),
 	}
 
-	addNodeDetailsCalls(contracts, contracts.Multicaller, &details, nodeAddress)
+	addNodeDetailsCalls(contracts, contracts.Multicaller, &details, nodeAddress, isAtlasDeployed)
 
 	_, err := contracts.Multicaller.FlexibleCall(true, opts)
 	if err != nil {
@@ -95,7 +97,7 @@ func GetNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts
 }
 
 // Gets the details for all nodes using the efficient multicall contract
-func GetAllNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts) ([]NativeNodeDetails, error) {
+func GetAllNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts, isAtlasDeployed bool) ([]NativeNodeDetails, error) {
 	opts := &bind.CallOpts{
 		BlockNumber: contracts.ElBlockNumber,
 	}
@@ -133,9 +135,15 @@ func GetAllNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContra
 				details.AverageNodeFee = big.NewInt(0)
 				details.DistributorBalanceUserETH = big.NewInt(0)
 				details.DistributorBalanceNodeETH = big.NewInt(0)
-				details.CollateralisationRatio = big.NewInt(0)
 
-				addNodeDetailsCalls(contracts, mc, details, address)
+				if !isAtlasDeployed {
+					// Before Atlas, all node's had a 1:1 collateralisation ratio
+					details.CollateralisationRatio = eth.EthToWei(2)
+				} else {
+					details.CollateralisationRatio = big.NewInt(0)
+				}
+
+				addNodeDetailsCalls(contracts, mc, details, address, isAtlasDeployed)
 			}
 			_, err = mc.FlexibleCall(true, opts)
 			if err != nil {
@@ -181,7 +189,54 @@ func GetAllNativeNodeDetails(rp *rocketpool.RocketPool, contracts *NetworkContra
 }
 
 // Calculate the average node fee and user/node shares of the distributor's balance
-func CalculateAverageFeeAndDistributorShares(rp *rocketpool.RocketPool, contracts *NetworkContracts, node NativeNodeDetails, minipoolDetails []*NativeMinipoolDetails) error {
+func CalculateAverageFeeAndDistributorShares_Legacy(rp *rocketpool.RocketPool, contracts *NetworkContracts, node NativeNodeDetails, minipoolDetails []*NativeMinipoolDetails) error {
+
+	// Calculate the total of all fees for staking minipools that aren't finalized
+	totalFee := big.NewInt(0)
+	eligibleMinipools := int64(0)
+	for _, mpd := range minipoolDetails {
+		if mpd.Status == types.Staking && !mpd.Finalised {
+			totalFee.Add(totalFee, mpd.NodeFee)
+			eligibleMinipools++
+		}
+	}
+
+	// Get the average fee (0 if there aren't any minipools)
+	if eligibleMinipools > 0 {
+		node.AverageNodeFee.Div(totalFee, big.NewInt(eligibleMinipools))
+	}
+
+	// Get the user and node portions of the distributor balance
+	distributorBalance := big.NewInt(0).Set(node.DistributorBalance)
+	if distributorBalance.Cmp(big.NewInt(0)) > 0 {
+		halfBalance := big.NewInt(0)
+		halfBalance.Div(distributorBalance, two)
+
+		if eligibleMinipools == 0 {
+			// Split it 50/50 if there are no minipools
+			node.DistributorBalanceNodeETH = big.NewInt(0).Set(halfBalance)
+			node.DistributorBalanceUserETH = big.NewInt(0).Sub(distributorBalance, halfBalance)
+		} else {
+			// Amount of ETH given to the NO as a commission
+			commissionEth := big.NewInt(0)
+			commissionEth.Mul(halfBalance, node.AverageNodeFee)
+			commissionEth.Div(commissionEth, big.NewInt(1e18))
+
+			node.DistributorBalanceNodeETH.Add(halfBalance, commissionEth)                         // Node gets half + commission
+			node.DistributorBalanceUserETH.Sub(distributorBalance, node.DistributorBalanceNodeETH) // User gets balance - node share
+		}
+
+	} else {
+		// No distributor balance
+		node.DistributorBalanceNodeETH = big.NewInt(0)
+		node.DistributorBalanceUserETH = big.NewInt(0)
+	}
+
+	return nil
+}
+
+// Calculate the average node fee and user/node shares of the distributor's balance
+func CalculateAverageFeeAndDistributorShares_New(rp *rocketpool.RocketPool, contracts *NetworkContracts, node NativeNodeDetails, minipoolDetails []*NativeMinipoolDetails) error {
 
 	// Calculate the total of all fees for staking minipools that aren't finalized
 	totalFee := big.NewInt(0)
@@ -278,7 +333,7 @@ func getNodeAddressesFast(rp *rocketpool.RocketPool, contracts *NetworkContracts
 }
 
 // Add all of the calls for the node details to the multicaller
-func addNodeDetailsCalls(contracts *NetworkContracts, mc *multicall.MultiCaller, details *NativeNodeDetails, address common.Address) {
+func addNodeDetailsCalls(contracts *NetworkContracts, mc *multicall.MultiCaller, details *NativeNodeDetails, address common.Address, isAtlasDeployed bool) {
 	mc.AddCall(contracts.RocketNodeManager, &details.Exists, "getNodeExists", address)
 	mc.AddCall(contracts.RocketNodeManager, &details.RegistrationTime, "getNodeRegistrationTime", address)
 	mc.AddCall(contracts.RocketNodeManager, &details.TimezoneLocation, "getNodeTimezoneLocation", address)
@@ -300,7 +355,8 @@ func addNodeDetailsCalls(contracts *NetworkContracts, mc *multicall.MultiCaller,
 	mc.AddCall(contracts.RocketNodeManager, &details.SmoothingPoolRegistrationState, "getSmoothingPoolRegistrationState", address)
 	mc.AddCall(contracts.RocketNodeManager, &details.SmoothingPoolRegistrationChanged, "getSmoothingPoolRegistrationChanged", address)
 
-	// Atlas
-	mc.AddCall(contracts.RocketNodeDeposit, &details.DepositCreditBalance, "getNodeDepositCredit", address)
-	mc.AddCall(contracts.RocketNodeStaking, &details.CollateralisationRatio, "getNodeETHCollateralisationRatio", address)
+	if isAtlasDeployed {
+		mc.AddCall(contracts.RocketNodeDeposit, &details.DepositCreditBalance, "getNodeDepositCredit", address)
+		mc.AddCall(contracts.RocketNodeStaking, &details.CollateralisationRatio, "getNodeETHCollateralisationRatio", address)
+	}
 }

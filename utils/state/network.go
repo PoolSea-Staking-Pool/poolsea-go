@@ -63,7 +63,7 @@ type NetworkDetails struct {
 }
 
 // Create a snapshot of all of the network's details
-func NewNetworkDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts) (*NetworkDetails, error) {
+func NewNetworkDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts, isAtlasDeployed bool) (*NetworkDetails, error) {
 	opts := &bind.CallOpts{
 		BlockNumber: contracts.ElBlockNumber,
 	}
@@ -124,11 +124,17 @@ func NewNetworkDetails(rp *rocketpool.RocketPool, contracts *NetworkContracts) (
 	contracts.Multicaller.AddCall(contracts.RocketDAOProtocolSettingsNetwork, &details.SubmitPricesEnabled, "getSubmitPricesEnabled")
 	contracts.Multicaller.AddCall(contracts.RocketDAOProtocolSettingsMinipool, &minipoolLaunchTimeout, "getLaunchTimeout")
 
-	// Atlas things
-	contracts.Multicaller.AddCall(contracts.RocketDAONodeTrustedSettingsMinipool, &promotionScrubPeriodSeconds, "getPromotionScrubPeriod")
-	contracts.Multicaller.AddCall(contracts.RocketDAONodeTrustedSettingsMinipool, &windowStartRaw, "getBondReductionWindowStart")
-	contracts.Multicaller.AddCall(contracts.RocketDAONodeTrustedSettingsMinipool, &windowLengthRaw, "getBondReductionWindowLength")
-	contracts.Multicaller.AddCall(contracts.RocketDepositPool, &details.DepositPoolUserBalance, "getUserBalance")
+	if isAtlasDeployed {
+		contracts.Multicaller.AddCall(contracts.RocketDAONodeTrustedSettingsMinipool, &promotionScrubPeriodSeconds, "getPromotionScrubPeriod")
+		contracts.Multicaller.AddCall(contracts.RocketDAONodeTrustedSettingsMinipool, &windowStartRaw, "getBondReductionWindowStart")
+		contracts.Multicaller.AddCall(contracts.RocketDAONodeTrustedSettingsMinipool, &windowLengthRaw, "getBondReductionWindowLength")
+		contracts.Multicaller.AddCall(contracts.RocketDepositPool, &details.DepositPoolUserBalance, "getUserBalance")
+	} else {
+		promotionScrubPeriodSeconds = big.NewInt(0)
+		windowStartRaw = big.NewInt(0)
+		windowLengthRaw = big.NewInt(0)
+		details.DepositPoolUserBalance = big.NewInt(0)
+	}
 
 	_, err := contracts.Multicaller.FlexibleCall(true, opts)
 	if err != nil {
@@ -233,4 +239,14 @@ func GetTotalEffectiveRplStake(rp *rocketpool.RocketPool, contracts *NetworkCont
 	}
 
 	return totalEffectiveStake, nil
+}
+
+// Converts a time on the chain (as Unix time in seconds) to a time.Time struct
+func convertToTime(value *big.Int) time.Time {
+	return time.Unix(value.Int64(), 0)
+}
+
+// Converts a duration on the chain (as a number of seconds) to a time.Duration struct
+func convertToDuration(value *big.Int) time.Duration {
+	return time.Duration(value.Uint64()) * time.Second
 }

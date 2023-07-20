@@ -512,8 +512,13 @@ func addMinipoolDetailsCalls(rp *rocketpool.RocketPool, contracts *NetworkContra
 	penaltyRatekey := crypto.Keccak256Hash([]byte("minipool.penalty.rate"), address.Bytes())
 	mc.AddCall(contracts.RocketStorage, &details.PenaltyRate, "getUint", penaltyRatekey)
 
-	// Query the minipool manager using the delegate-invariant function
-	mc.AddCall(contracts.RocketMinipoolManager, &details.DepositTypeRaw, "getMinipoolDepositType", address)
+	if contracts._isAtlasDeployed() {
+		// Query the minipool manager using the delegate-invariant function
+		mc.AddCall(contracts.RocketMinipoolManager, &details.DepositTypeRaw, "getMinipoolDepositType", address)
+	} else {
+		// Fallback to querying the minipool
+		mc.AddCall(mpContract, &details.DepositTypeRaw, "getDepositType")
+	}
 
 	return nil
 }

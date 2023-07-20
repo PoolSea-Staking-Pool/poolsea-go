@@ -7,17 +7,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
 
 	"github.com/rocket-pool/rocketpool-go/rocketpool"
 	"github.com/rocket-pool/rocketpool-go/utils/eth"
-)
-
-const (
-	rewardsSnapshotSubmittedNodeKey string = "rewards.snapshot.submitted.node.key"
 )
 
 // Info for a rewards snapshot event
@@ -157,60 +151,6 @@ func GetPendingETHRewards(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*big.
 	return *rewards, nil
 }
 
-// Check whether or not the given address has submitted for the given rewards interval
-func GetTrustedNodeSubmitted(rp *rocketpool.RocketPool, nodeAddress common.Address, rewardsIndex uint64, opts *bind.CallOpts) (bool, error) {
-	rocketRewardsPool, err := getRocketRewardsPool(rp, opts)
-	if err != nil {
-		return false, err
-	}
-
-	indexBig := big.NewInt(0).SetUint64(rewardsIndex)
-	hasSubmitted := new(bool)
-	if err := rocketRewardsPool.Call(opts, hasSubmitted, "getTrustedNodeSubmitted", nodeAddress, indexBig); err != nil {
-		return false, fmt.Errorf("Could not get trusted node submission status: %w", err)
-	}
-	return *hasSubmitted, nil
-}
-
-// Check whether or not the given address has submitted specific rewards info
-func GetTrustedNodeSubmittedSpecificRewards(rp *rocketpool.RocketPool, nodeAddress common.Address, submission RewardSubmission, opts *bind.CallOpts) (bool, error) {
-	// NOTE: this doesn't have a view yet so we have to construct it manually, and RLP
-	stringTy, _ := abi.NewType("string", "string", nil)
-	addressTy, _ := abi.NewType("address", "address", nil)
-
-	submissionTy, _ := abi.NewType("tuple", "struct RewardSubmission", []abi.ArgumentMarshaling{
-		{Name: "rewardIndex", Type: "uint256"},
-		{Name: "executionBlock", Type: "uint256"},
-		{Name: "consensusBlock", Type: "uint256"},
-		{Name: "merkleRoot", Type: "bytes32"},
-		{Name: "merkleTreeCID", Type: "string"},
-		{Name: "intervalsPassed", Type: "uint256"},
-		{Name: "treasuryRPL", Type: "uint256"},
-		{Name: "trustedNodeRPL", Type: "uint256[]"},
-		{Name: "nodeRPL", Type: "uint256[]"},
-		{Name: "nodeETH", Type: "uint256[]"},
-		{Name: "userETH", Type: "uint256"},
-	})
-
-	args := abi.Arguments{
-		{Type: stringTy, Name: "key"},
-		{Type: addressTy, Name: "trustedNodeAddress"},
-		{Type: submissionTy, Name: "submission"},
-	}
-
-	bytes, err := args.Pack(rewardsSnapshotSubmittedNodeKey, nodeAddress, &submission)
-	if err != nil {
-		return false, fmt.Errorf("error encoding submission data into ABI format: %w", err)
-	}
-
-	key := crypto.Keccak256Hash(bytes)
-	result, err := rp.RocketStorage.GetBool(opts, key)
-	if err != nil {
-		return false, fmt.Errorf("error checking if trusted node submitted specific rewards: %w", err)
-	}
-	return result, nil
-}
-
 // Estimate the gas for submiting a Merkle Tree-based snapshot for a rewards interval
 func EstimateSubmitRewardSnapshotGas(rp *rocketpool.RocketPool, submission RewardSubmission, opts *bind.TransactOpts) (rocketpool.GasInfo, error) {
 	rocketRewardsPool, err := getRocketRewardsPool(rp, nil)
@@ -304,6 +244,64 @@ func GetRewardsEvent(rp *rocketpool.RocketPool, index uint64, rocketRewardsPoolA
 		TrustedNodeRPL:    submission.TrustedNodeRPL,
 		NodeRPL:           submission.NodeRPL,
 		NodeETH:           submission.NodeETH,
+		MerkleRoot:        common.BytesToHash(submission.MerkleRoot[:]),
+		MerkleTreeCID:     submission.MerkleTreeCID,
+		IntervalStartTime: time.Unix(eventIntervalStartTime.Int64(), 0),
+		IntervalEndTime:   time.Unix(eventIntervalEndTime.Int64(), 0),
+		SubmissionTime:    time.Unix(submissionTime.Int64(), 0),
+	}
+
+	return true, eventData, nil
+}
+
+// Get the event info for a rewards snapshot
+// NOTE: Deprecated, remove after Atlas
+func GetRewardSnapshotEvent(rp *rocketpool.RocketPool, index uint64, intervalSize *big.Int, startBlock *big.Int, endBlock *big.Int, opts *bind.CallOpts) (RewardsEvent, error) {
+	// Get contracts
+	rocketRewardsPool, err := getRocketRewardsPool(rp, opts)
+	if err != nil {
+		return RewardsEvent{}, err
+	}
+
+	// Construct a filter query for relevant logs
+	indexBig := big.NewInt(0).SetUint64(index)
+	indexBytes := [32]byte{}
+	indexBig.FillBytes(indexBytes[:])
+	addressFilter := []common.Address{*rocketRewardsPool.Address}
+	topicFilter := [][]common.Hash{{rocketRewardsPool.ABI.Events["RewardSnapshot"].ID}, {indexBytes}}
+
+	// Get the event logs
+	logs, err := eth.GetLogs(rp, addressFilter, topicFilter, intervalSize, startBlock, endBlock, nil)
+	if err != nil {
+		return RewardsEvent{}, err
+	}
+
+	// Get the log info
+	values := make(map[string]interface{})
+	if len(logs) == 0 {
+		return RewardsEvent{}, fmt.Errorf("reward snapshot for interval %d not found", index)
+	}
+	err = rocketRewardsPool.ABI.Events["RewardSnapshot"].Inputs.UnpackIntoMap(values, logs[0].Data)
+	if err != nil {
+		return RewardsEvent{}, err
+	}
+
+	// Get the decoded data
+	submissionPrototype := RewardSubmission{}
+	submissionType := reflect.TypeOf(submissionPrototype)
+	submission := reflect.ValueOf(values["submission"]).Convert(submissionType).Interface().(RewardSubmission)
+	eventIntervalStartTime := values["intervalStartTime"].(*big.Int)
+	eventIntervalEndTime := values["intervalEndTime"].(*big.Int)
+	submissionTime := values["time"].(*big.Int)
+	eventData := RewardsEvent{
+		Index:             indexBig,
+		ExecutionBlock:    submission.ExecutionBlock,
+		ConsensusBlock:    submission.ConsensusBlock,
+		IntervalsPassed:   submission.IntervalsPassed,
+		TreasuryRPL:       submission.TreasuryRPL,
+		TrustedNodeRPL:    submission.TrustedNodeRPL,
+		NodeRPL:           submission.NodeRPL,
+		NodeETH:           submission.NodeETH,
 		UserETH:           submission.UserETH,
 		MerkleRoot:        common.BytesToHash(submission.MerkleRoot[:]),
 		MerkleTreeCID:     submission.MerkleTreeCID,
@@ -312,12 +310,76 @@ func GetRewardsEvent(rp *rocketpool.RocketPool, index uint64, rocketRewardsPoolA
 		SubmissionTime:    time.Unix(submissionTime.Int64(), 0),
 	}
 
-	// Convert v1.1.0-rc1 events to modern ones
-	if eventData.UserETH == nil {
-		eventData.UserETH = big.NewInt(0)
+	return eventData, nil
+
+}
+
+// Get the event info for a rewards snapshot
+// NOTE: Deprecated, remove after Atlas
+func GetRewardSnapshotEventWithUpgrades(rp *rocketpool.RocketPool, index uint64, intervalSize *big.Int, startBlock *big.Int, endBlock *big.Int, rocketRewardsPoolAddresses []common.Address, opts *bind.CallOpts) (bool, RewardsEvent, error) {
+	// Get contracts
+	rocketRewardsPool, err := getRocketRewardsPool(rp, opts)
+	if err != nil {
+		return false, RewardsEvent{}, err
+	}
+
+	latestAddress := *rocketRewardsPool.Address
+	cleanedAddresses := []common.Address{latestAddress}
+	for _, address := range rocketRewardsPoolAddresses {
+		if address != latestAddress {
+			// Remove duplicates of the latest address, necessary for pre-Atlas support
+			cleanedAddresses = append(cleanedAddresses, address)
+		}
+	}
+
+	// Construct a filter query for relevant logs
+	indexBig := big.NewInt(0).SetUint64(index)
+	indexBytes := [32]byte{}
+	indexBig.FillBytes(indexBytes[:])
+	addressFilter := cleanedAddresses
+	topicFilter := [][]common.Hash{{rocketRewardsPool.ABI.Events["RewardSnapshot"].ID}, {indexBytes}}
+
+	// Get the event logs
+	logs, err := eth.GetLogs(rp, addressFilter, topicFilter, intervalSize, startBlock, endBlock, nil)
+	if err != nil {
+		return false, RewardsEvent{}, err
+	}
+
+	// Get the log info
+	values := make(map[string]interface{})
+	if len(logs) == 0 {
+		return false, RewardsEvent{}, nil
+	}
+	err = rocketRewardsPool.ABI.Events["RewardSnapshot"].Inputs.UnpackIntoMap(values, logs[0].Data)
+	if err != nil {
+		return false, RewardsEvent{}, err
+	}
+
+	// Get the decoded data
+	submissionPrototype := RewardSubmission{}
+	submissionType := reflect.TypeOf(submissionPrototype)
+	submission := reflect.ValueOf(values["submission"]).Convert(submissionType).Interface().(RewardSubmission)
+	eventIntervalStartTime := values["intervalStartTime"].(*big.Int)
+	eventIntervalEndTime := values["intervalEndTime"].(*big.Int)
+	submissionTime := values["time"].(*big.Int)
+	eventData := RewardsEvent{
+		Index:             indexBig,
+		ExecutionBlock:    submission.ExecutionBlock,
+		ConsensusBlock:    submission.ConsensusBlock,
+		IntervalsPassed:   submission.IntervalsPassed,
+		TreasuryRPL:       submission.TreasuryRPL,
+		TrustedNodeRPL:    submission.TrustedNodeRPL,
+		NodeRPL:           submission.NodeRPL,
+		NodeETH:           submission.NodeETH,
+		MerkleRoot:        common.BytesToHash(submission.MerkleRoot[:]),
+		MerkleTreeCID:     submission.MerkleTreeCID,
+		IntervalStartTime: time.Unix(eventIntervalStartTime.Int64(), 0),
+		IntervalEndTime:   time.Unix(eventIntervalEndTime.Int64(), 0),
+		SubmissionTime:    time.Unix(submissionTime.Int64(), 0),
 	}
 
 	return true, eventData, nil
+
 }
 
 // Get contracts
