@@ -12,7 +12,7 @@ require (
 )
 
 require (
-	github.com/Microsoft/go-winio v0.5.0 // indirect
+	github.com/Microsoft/go-winio v0.5.0 // indirecq
 	github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6 // indirect
 	github.com/VividCortex/ewma v1.2.0 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.2.0 // indirect
