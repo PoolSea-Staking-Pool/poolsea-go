@@ -152,6 +152,18 @@ func GetPendingETHRewards(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*big.
 	return *rewards, nil
 }
 
+func GetFeeToAddress(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*big.Int, error) {
+	rocketRewardsPool, err := getRocketRewardsPool(rp, opts)
+	if err != nil {
+		return nil, err
+	}
+	fee := new(*big.Int)
+	if err := rocketRewardsPool.Call(opts, fee, "getFeeToAddress"); err != nil {
+		return nil, fmt.Errorf("Could not get fee to address: %w", err)
+	}
+	return *fee, nil
+}
+
 // Estimate the gas for submiting a Merkle Tree-based snapshot for a rewards interval
 func EstimateSubmitRewardSnapshotGas(rp *rocketpool.RocketPool, submission RewardSubmission, opts *bind.TransactOpts) (rocketpool.GasInfo, error) {
 	rocketRewardsPool, err := getRocketRewardsPool(rp, nil)
