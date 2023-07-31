@@ -14,7 +14,7 @@ import (
 )
 
 // Config
-const MinipoolSettingsContractName = "rocketDAOProtocolSettingsMinipool"
+const MinipoolSettingsContractName = "poolseaDAOProtocolSettingsMinipool"
 
 // Get the minipool launch balance
 func GetMinipoolLaunchBalance(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*big.Int, error) {

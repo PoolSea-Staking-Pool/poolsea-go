@@ -39,5 +39,5 @@ var rocketNetworkPenaltiesLock sync.Mutex
 func getRocketNetworkPenalties(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNetworkPenaltiesLock.Lock()
 	defer rocketNetworkPenaltiesLock.Unlock()
-	return rp.GetContract("rocketNetworkPenalties", opts)
+	return rp.GetContract("poolseaNetworkPenalties", opts)
 }

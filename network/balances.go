@@ -131,5 +131,5 @@ var rocketNetworkBalancesLock sync.Mutex
 func getRocketNetworkBalances(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNetworkBalancesLock.Lock()
 	defer rocketNetworkBalancesLock.Unlock()
-	return rp.GetContract("rocketNetworkBalances", opts)
+	return rp.GetContract("poolseaNetworkBalances", opts)
 }

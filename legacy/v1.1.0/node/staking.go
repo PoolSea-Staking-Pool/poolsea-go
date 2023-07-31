@@ -204,8 +204,8 @@ func getRocketNodeStaking(rp *rocketpool.RocketPool, address *common.Address, op
 	rocketNodeStakingLock.Lock()
 	defer rocketNodeStakingLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_1_0.GetContract("rocketNodeStaking", opts)
+		return rp.VersionManager.V1_1_0.GetContract("poolseaNodeStaking", opts)
 	} else {
-		return rp.VersionManager.V1_1_0.GetContractWithAddress("rocketNodeStaking", *address)
+		return rp.VersionManager.V1_1_0.GetContractWithAddress("poolseaNodeStaking", *address)
 	}
 }

@@ -602,5 +602,5 @@ var rocketAuctionManagerLock sync.Mutex
 func getRocketAuctionManager(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketAuctionManagerLock.Lock()
 	defer rocketAuctionManagerLock.Unlock()
-	return rp.GetContract("rocketAuctionManager", opts)
+	return rp.GetContract("poolseaAuctionManager", opts)
 }

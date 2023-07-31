@@ -13,7 +13,7 @@ import (
 )
 
 // Config
-const DepositSettingsContractName = "rocketDAOProtocolSettingsDeposit"
+const DepositSettingsContractName = "poolseaDAOProtocolSettingsDeposit"
 
 // Deposits currently enabled
 func GetDepositEnabled(rp *rocketpool.RocketPool, opts *bind.CallOpts) (bool, error) {

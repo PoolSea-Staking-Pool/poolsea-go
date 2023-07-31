@@ -14,7 +14,7 @@ import (
 )
 
 // Config
-const NodeSettingsContractName = "rocketDAOProtocolSettingsNode"
+const NodeSettingsContractName = "poolseaDAOProtocolSettingsNode"
 
 // Node registrations currently enabled
 func GetNodeRegistrationEnabled(rp *rocketpool.RocketPool, opts *bind.CallOpts) (bool, error) {

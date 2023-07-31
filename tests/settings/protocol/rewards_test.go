@@ -23,15 +23,15 @@ func TestRewardsSettings(t *testing.T) {
 
 	// Bootstrap a claimer & get claimer settings
 	claimerPerc := 0.1
-	if _, err := protocoldao.BootstrapClaimer(rp, "rocketClaimNode", claimerPerc, ownerAccount.GetTransactor()); err != nil {
+	if _, err := protocoldao.BootstrapClaimer(rp, "poolseaClaimNode", claimerPerc, ownerAccount.GetTransactor()); err != nil {
 		t.Error(err)
 	} else {
-		if value, err := protocolsettings.GetRewardsClaimerPerc(rp, "rocketClaimNode", nil); err != nil {
+		if value, err := protocolsettings.GetRewardsClaimerPerc(rp, "poolseaClaimNode", nil); err != nil {
 			t.Error(err)
 		} else if value != claimerPerc {
 			t.Errorf("Incorrect rewards claimer percent %f", value)
 		}
-		if value, err := protocolsettings.GetRewardsClaimerPercTimeUpdated(rp, "rocketClaimNode", nil); err != nil {
+		if value, err := protocolsettings.GetRewardsClaimerPercTimeUpdated(rp, "poolseaClaimNode", nil); err != nil {
 			t.Error(err)
 		} else if value == 0 {
 			t.Errorf("Incorrect rewards claimer percent time updated %d", value)

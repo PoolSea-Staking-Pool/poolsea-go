@@ -50,7 +50,7 @@ func TestStakeRPL(t *testing.T) {
 	}
 
 	// Approve RPL transfer for staking
-	rocketNodeStakingAddress, err := rp.GetAddress("rocketNodeStaking")
+	rocketNodeStakingAddress, err := rp.GetAddress("poolseaNodeStaking")
 	if err != nil {
 		t.Fatal(err)
 	}

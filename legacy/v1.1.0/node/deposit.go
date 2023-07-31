@@ -57,8 +57,8 @@ func getRocketNodeDeposit(rp *rocketpool.RocketPool, address *common.Address, op
 	rocketNodeDepositLock.Lock()
 	defer rocketNodeDepositLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_1_0.GetContract("rocketNodeDeposit", opts)
+		return rp.VersionManager.V1_1_0.GetContract("poolseaNodeDeposit", opts)
 	} else {
-		return rp.VersionManager.V1_1_0.GetContractWithAddress("rocketNodeDeposit", *address)
+		return rp.VersionManager.V1_1_0.GetContractWithAddress("poolseaNodeDeposit", *address)
 	}
 }

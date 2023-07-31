@@ -100,5 +100,5 @@ var rocketNodeDepositLock sync.Mutex
 func getRocketNodeDeposit(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNodeDepositLock.Lock()
 	defer rocketNodeDepositLock.Unlock()
-	return rp.GetContract("rocketNodeDeposit", opts)
+	return rp.GetContract("poolseaNodeDeposit", opts)
 }

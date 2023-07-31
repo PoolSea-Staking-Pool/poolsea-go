@@ -15,7 +15,7 @@ import (
 
 // Config
 const (
-	MembersSettingsContractName       = "rocketDAONodeTrustedSettingsMembers"
+	MembersSettingsContractName       = "poolseaDAONodeTrustedSettingsMembers"
 	QuorumSettingPath                 = "members.quorum"
 	RPLBondSettingPath                = "members.rplbond"
 	MinipoolUnbondedMaxSettingPath    = "members.minipool.unbonded.max"

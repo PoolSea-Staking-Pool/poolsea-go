@@ -286,7 +286,7 @@ func TestProposeUpgradeContract(t *testing.T) {
 
 	// Submit, pass & execute upgrade contract proposal
 	proposalUpgradeType := "upgradeContract"
-	proposalContractName := "rocketDepositPool"
+	proposalContractName := "poolseaDepositPool"
 	proposalContractAddress := common.HexToAddress("0x1111111111111111111111111111111111111111")
 	proposalContractAbi := "[{\"name\":\"foo\",\"type\":\"function\",\"inputs\":[],\"outputs\":[]}]"
 	proposalId, _, err := trustednodedao.ProposeUpgradeContract(rp, "upgrade rocketDepositPool", proposalUpgradeType, proposalContractName, proposalContractAbi, proposalContractAddress, trustedNodeAccount1.GetTransactor())

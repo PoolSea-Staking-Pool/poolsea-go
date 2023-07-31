@@ -92,8 +92,8 @@ func getRocketNetworkPrices(rp *rocketpool.RocketPool, address *common.Address, 
 	rocketNetworkPricesLock.Lock()
 	defer rocketNetworkPricesLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_1_0.GetContract("rocketNetworkPrices", opts)
+		return rp.VersionManager.V1_1_0.GetContract("poolseaNetworkPrices", opts)
 	} else {
-		return rp.VersionManager.V1_1_0.GetContractWithAddress("rocketNetworkPrices", *address)
+		return rp.VersionManager.V1_1_0.GetContractWithAddress("poolseaNetworkPrices", *address)
 	}
 }

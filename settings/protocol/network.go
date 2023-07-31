@@ -14,7 +14,7 @@ import (
 )
 
 // Config
-const NetworkSettingsContractName = "rocketDAOProtocolSettingsNetwork"
+const NetworkSettingsContractName = "poolseaDAOProtocolSettingsNetwork"
 
 // The threshold of trusted nodes that must reach consensus on oracle data to commit it
 func GetNodeConsensusThreshold(rp *rocketpool.RocketPool, opts *bind.CallOpts) (float64, error) {

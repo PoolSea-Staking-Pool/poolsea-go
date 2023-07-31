@@ -91,61 +91,61 @@ func NewNetworkContracts(rp *rocketpool.RocketPool, multicallerAddress common.Ad
 	// Create the contract wrappers for Redstone
 	wrappers := []contractArtifacts{
 		{
-			name:     "rocketDAONodeTrustedSettingsMinipool",
+			name:     "poolseaDAONodeTrustedSettingsMinipool",
 			contract: &contracts.RocketDAONodeTrustedSettingsMinipool,
 		}, {
-			name:     "rocketDAOProtocolSettingsMinipool",
+			name:     "poolseaDAOProtocolSettingsMinipool",
 			contract: &contracts.RocketDAOProtocolSettingsMinipool,
 		}, {
-			name:     "rocketDAOProtocolSettingsNetwork",
+			name:     "poolseaDAOProtocolSettingsNetwork",
 			contract: &contracts.RocketDAOProtocolSettingsNetwork,
 		}, {
-			name:     "rocketDAOProtocolSettingsNode",
+			name:     "poolseaDAOProtocolSettingsNode",
 			contract: &contracts.RocketDAOProtocolSettingsNode,
 		}, {
-			name:     "rocketDepositPool",
+			name:     "poolseaDepositPool",
 			contract: &contracts.RocketDepositPool,
 		}, {
-			name:     "rocketMinipoolManager",
+			name:     "poolseaMinipoolManager",
 			contract: &contracts.RocketMinipoolManager,
 		}, {
-			name:     "rocketMinipoolQueue",
+			name:     "poolseaMinipoolQueue",
 			contract: &contracts.RocketMinipoolQueue,
 		}, {
-			name:     "rocketNetworkBalances",
+			name:     "poolseaNetworkBalances",
 			contract: &contracts.RocketNetworkBalances,
 		}, {
-			name:     "rocketNetworkFees",
+			name:     "poolseaNetworkFees",
 			contract: &contracts.RocketNetworkFees,
 		}, {
-			name:     "rocketNetworkPrices",
+			name:     "poolseaNetworkPrices",
 			contract: &contracts.RocketNetworkPrices,
 		}, {
-			name:     "rocketNodeDeposit",
+			name:     "poolseaNodeDeposit",
 			contract: &contracts.RocketNodeDeposit,
 		}, {
-			name:     "rocketNodeDistributorFactory",
+			name:     "poolseaNodeDistributorFactory",
 			contract: &contracts.RocketNodeDistributorFactory,
 		}, {
-			name:     "rocketNodeManager",
+			name:     "poolseaNodeManager",
 			contract: &contracts.RocketNodeManager,
 		}, {
-			name:     "rocketNodeStaking",
+			name:     "poolseaNodeStaking",
 			contract: &contracts.RocketNodeStaking,
 		}, {
-			name:     "rocketRewardsPool",
+			name:     "poolseaRewardsPool",
 			contract: &contracts.RocketRewardsPool,
 		}, {
-			name:     "rocketSmoothingPool",
+			name:     "poolseaSmoothingPool",
 			contract: &contracts.RocketSmoothingPool,
 		}, {
-			name:     "rocketTokenRETH",
+			name:     "poolseaTokenRETH",
 			contract: &contracts.RocketTokenRETH,
 		}, {
-			name:     "rocketTokenRPL",
+			name:     "poolseaTokenRPL",
 			contract: &contracts.RocketTokenRPL,
 		}, {
-			name:     "rocketTokenRPLFixedSupply",
+			name:     "poolseaTokenRPLFixedSupply",
 			contract: &contracts.RocketTokenRPLFixedSupply,
 		},
 	}
@@ -153,7 +153,7 @@ func NewNetworkContracts(rp *rocketpool.RocketPool, multicallerAddress common.Ad
 	// Atlas wrappers
 	if isAtlasDeployed {
 		wrappers = append(wrappers, contractArtifacts{
-			name:     "rocketMinipoolBondReducer",
+			name:     "poolseaMinipoolBondReducer",
 			contract: &contracts.RocketMinipoolBondReducer,
 		})
 	}

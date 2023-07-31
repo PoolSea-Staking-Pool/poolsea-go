@@ -78,5 +78,5 @@ var rocketNetworkPricesLock sync.Mutex
 func getRocketNetworkPrices(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNetworkPricesLock.Lock()
 	defer rocketNetworkPricesLock.Unlock()
-	return rp.GetContract("rocketNetworkPrices", opts)
+	return rp.GetContract("poolseaNetworkPrices", opts)
 }

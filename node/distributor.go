@@ -86,7 +86,7 @@ var rocketNodeDistributorFactoryLock sync.Mutex
 func getRocketNodeDistributorFactory(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNodeDistributorFactoryLock.Lock()
 	defer rocketNodeDistributorFactoryLock.Unlock()
-	return rp.GetContract("rocketNodeDistributorFactory", opts)
+	return rp.GetContract("poolseaNodeDistributorFactory", opts)
 }
 
 // Get a distributor contract
@@ -95,5 +95,5 @@ var rocketDistributorLock sync.Mutex
 func getDistributorContract(rp *rocketpool.RocketPool, distributorAddress common.Address, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketDistributorLock.Lock()
 	defer rocketDistributorLock.Unlock()
-	return rp.MakeContract("rocketNodeDistributorDelegate", distributorAddress, opts)
+	return rp.MakeContract("poolseaNodeDistributorDelegate", distributorAddress, opts)
 }

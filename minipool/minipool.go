@@ -622,5 +622,5 @@ var rocketMinipoolManagerLock sync.Mutex
 func getRocketMinipoolManager(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketMinipoolManagerLock.Lock()
 	defer rocketMinipoolManagerLock.Unlock()
-	return rp.GetContract("rocketMinipoolManager", opts)
+	return rp.GetContract("poolseaMinipoolManager", opts)
 }

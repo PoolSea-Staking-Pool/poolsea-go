@@ -646,7 +646,7 @@ func TestDelegateUpgradeAndRollback(t *testing.T) {
 	newAbi := "[{\"name\":\"foo\",\"type\":\"function\",\"inputs\":[],\"outputs\":[]}]"
 
 	// Upgrade the network delegate contract
-	_, err = trustednodedao.BootstrapUpgrade(rp, "upgradeContract", "rocketMinipoolDelegate", newAbi, newDelegate, ownerAccount.GetTransactor())
+	_, err = trustednodedao.BootstrapUpgrade(rp, "upgradeContract", "poolseaMinipoolDelegate", newAbi, newDelegate, ownerAccount.GetTransactor())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -731,7 +731,7 @@ func TestUseLatestDelegate(t *testing.T) {
 	newAbi := "[{\"name\":\"foo\",\"type\":\"function\",\"inputs\":[],\"outputs\":[]}]"
 
 	// Upgrade the network delegate contract
-	_, err = trustednodedao.BootstrapUpgrade(rp, "upgradeContract", "rocketMinipoolDelegate", newAbi, newDelegate, ownerAccount.GetTransactor())
+	_, err = trustednodedao.BootstrapUpgrade(rp, "upgradeContract", "poolseaMinipoolDelegate", newAbi, newDelegate, ownerAccount.GetTransactor())
 	if err != nil {
 		t.Fatal(err)
 	}

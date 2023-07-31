@@ -30,8 +30,8 @@ func getRocketMinipoolFactory(rp *rocketpool.RocketPool, address *common.Address
 	rocketMinipoolFactoryLock.Lock()
 	defer rocketMinipoolFactoryLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_1_0.GetContract("rocketMinipoolFactory", opts)
+		return rp.VersionManager.V1_1_0.GetContract("poolseaMinipoolFactory", opts)
 	} else {
-		return rp.VersionManager.V1_1_0.GetContractWithAddress("rocketMinipoolFactory", *address)
+		return rp.VersionManager.V1_1_0.GetContractWithAddress("poolseaMinipoolFactory", *address)
 	}
 }

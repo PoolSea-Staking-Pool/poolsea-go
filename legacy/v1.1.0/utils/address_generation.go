@@ -31,7 +31,7 @@ func GenerateAddress(rp *rocketpool.RocketPool, nodeAddress common.Address, depo
 	if err != nil {
 		return common.Address{}, err
 	}
-	minipoolAbi, err := rp.GetABI("rocketMinipool", opts)
+	minipoolAbi, err := rp.GetABI("poolseaMinipool", opts)
 	if err != nil {
 		return common.Address{}, err
 	}
@@ -67,5 +67,5 @@ var rocketMinipoolFactoryLock sync.Mutex
 func getRocketMinipoolFactory(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketMinipoolFactoryLock.Lock()
 	defer rocketMinipoolFactoryLock.Unlock()
-	return rp.GetContract("rocketMinipoolFactory", opts)
+	return rp.GetContract("poolseaMinipoolFactory", opts)
 }

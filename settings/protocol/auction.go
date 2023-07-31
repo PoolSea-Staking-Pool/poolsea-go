@@ -14,7 +14,7 @@ import (
 )
 
 // Config
-const AuctionSettingsContractName = "rocketDAOProtocolSettingsAuction"
+const AuctionSettingsContractName = "poolseaDAOProtocolSettingsAuction"
 
 // Lot creation currently enabled
 func GetCreateLotEnabled(rp *rocketpool.RocketPool, opts *bind.CallOpts) (bool, error) {

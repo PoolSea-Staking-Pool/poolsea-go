@@ -643,5 +643,5 @@ var rocketDAOProposalLock sync.Mutex
 func getRocketDAOProposal(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketDAOProposalLock.Lock()
 	defer rocketDAOProposalLock.Unlock()
-	return rp.GetContract("rocketDAOProposal", opts)
+	return rp.GetContract("poolseaDAOProposal", opts)
 }

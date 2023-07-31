@@ -55,7 +55,7 @@ func MintTrustedNodeBond(rp *rocketpool.RocketPool, ownerAccount *accounts.Accou
 	}
 
 	// Get RocketDAONodeTrustedActions contract address
-	rocketDAONodeTrustedActionsAddress, err := rp.GetAddress("rocketDAONodeTrustedActions")
+	rocketDAONodeTrustedActionsAddress, err := rp.GetAddress("poolseaDAONodeTrustedActions")
 	if err != nil {
 		return err
 	}

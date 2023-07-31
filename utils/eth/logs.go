@@ -20,7 +20,7 @@ type FilterQuery struct {
 }
 
 func FilterContractLogs(rp *rocketpool.RocketPool, contractName string, q FilterQuery, intervalSize *big.Int, opts *bind.CallOpts) ([]types.Log, error) {
-	rocketDaoNodeTrustedUpgrade, err := rp.GetContract("rocketDAONodeTrustedUpgrade", opts)
+	rocketDaoNodeTrustedUpgrade, err := rp.GetContract("poolseaDAONodeTrustedUpgrade", opts)
 	if err != nil {
 		return nil, err
 	}

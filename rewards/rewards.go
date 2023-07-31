@@ -94,7 +94,7 @@ func GetNodeOperatorRewardsPercent(rp *rocketpool.RocketPool, opts *bind.CallOpt
 		return nil, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimNode"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimNode"); err != nil {
 		return nil, fmt.Errorf("Could not get node operator rewards percent: %w", err)
 	}
 	return *perc, nil
@@ -107,7 +107,7 @@ func GetTrustedNodeOperatorRewardsPercent(rp *rocketpool.RocketPool, opts *bind.
 		return nil, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimTrustedNode"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimTrustedNode"); err != nil {
 		return nil, fmt.Errorf("Could not get trusted node operator rewards percent: %w", err)
 	}
 	return *perc, nil
@@ -120,7 +120,7 @@ func GetProtocolDaoRewardsPercent(rp *rocketpool.RocketPool, opts *bind.CallOpts
 		return nil, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimDAO"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimDAO"); err != nil {
 		return nil, fmt.Errorf("Could not get protocol DAO rewards percent: %w", err)
 	}
 	return *perc, nil
@@ -401,5 +401,5 @@ var rocketRewardsPoolLock sync.Mutex
 func getRocketRewardsPool(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketRewardsPoolLock.Lock()
 	defer rocketRewardsPoolLock.Unlock()
-	return rp.GetContract("rocketRewardsPool", opts)
+	return rp.GetContract("poolseaRewardsPool", opts)
 }

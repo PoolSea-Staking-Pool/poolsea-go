@@ -14,7 +14,7 @@ import (
 
 // Config
 const (
-	MinipoolSettingsContractName  = "rocketDAONodeTrustedSettingsMinipool"
+	MinipoolSettingsContractName  = "poolseaDAONodeTrustedSettingsMinipool"
 	ScrubPeriodPath               = "minipool.scrub.period"
 	PromotionScrubPeriodPath      = "minipool.promotion.scrub.period"
 	ScrubPenaltyEnabledPath       = "minipool.scrub.penalty.enabled"

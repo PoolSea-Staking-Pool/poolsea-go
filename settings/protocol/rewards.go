@@ -14,7 +14,7 @@ import (
 )
 
 // Config
-const RewardsSettingsContractName = "rocketDAOProtocolSettingsRewards"
+const RewardsSettingsContractName = "poolseaDAOProtocolSettingsRewards"
 
 // The claim amount for a claimer as a fraction
 func GetRewardsClaimerPerc(rp *rocketpool.RocketPool, contractName string, opts *bind.CallOpts) (float64, error) {

@@ -943,7 +943,7 @@ var rocketNodeManagerLock sync.Mutex
 func getRocketNodeManager(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNodeManagerLock.Lock()
 	defer rocketNodeManagerLock.Unlock()
-	return rp.GetContract("rocketNodeManager", opts)
+	return rp.GetContract("poolseaNodeManager", opts)
 }
 
 var rocketNetworkPricesLock sync.Mutex
@@ -951,7 +951,7 @@ var rocketNetworkPricesLock sync.Mutex
 func getRocketNetworkPrices(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNetworkPricesLock.Lock()
 	defer rocketNetworkPricesLock.Unlock()
-	return rp.GetContract("rocketNetworkPrices", opts)
+	return rp.GetContract("poolseaNetworkPrices", opts)
 }
 
 var rocketNetworkBalancesLock sync.Mutex
@@ -959,7 +959,7 @@ var rocketNetworkBalancesLock sync.Mutex
 func getRocketNetworkBalances(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNetworkBalancesLock.Lock()
 	defer rocketNetworkBalancesLock.Unlock()
-	return rp.GetContract("rocketNetworkBalances", opts)
+	return rp.GetContract("poolseaNetworkBalances", opts)
 }
 
 var rocketDAONodeTrustedActionsLock sync.Mutex
@@ -967,5 +967,5 @@ var rocketDAONodeTrustedActionsLock sync.Mutex
 func getRocketDAONodeTrustedActions(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketDAONodeTrustedActionsLock.Lock()
 	defer rocketDAONodeTrustedActionsLock.Unlock()
-	return rp.GetContract("rocketDAONodeTrustedActions", opts)
+	return rp.GetContract("poolseaDAONodeTrustedActions", opts)
 }

@@ -28,7 +28,7 @@ func TestProposalDetails(t *testing.T) {
 	})
 
 	// The DAO to check for proposals under
-	proposalDaoName := "rocketDAONodeTrustedProposals"
+	proposalDaoName := "poolseaDAONodeTrustedProposals"
 
 	// Set proposal cooldown
 	if _, err := trustednodesettings.BootstrapProposalCooldownTime(rp, 0, ownerAccount.GetTransactor()); err != nil {

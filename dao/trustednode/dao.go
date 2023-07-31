@@ -457,5 +457,5 @@ var rocketDAONodeTrustedLock sync.Mutex
 func getRocketDAONodeTrusted(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketDAONodeTrustedLock.Lock()
 	defer rocketDAONodeTrustedLock.Unlock()
-	return rp.GetContract("rocketDAONodeTrusted", opts)
+	return rp.GetContract("poolseaDAONodeTrusted", opts)
 }

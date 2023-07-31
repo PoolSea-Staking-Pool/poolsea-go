@@ -545,8 +545,8 @@ func getRocketMinipoolManager(rp *rocketpool.RocketPool, address *common.Address
 	rocketMinipoolManagerLock.Lock()
 	defer rocketMinipoolManagerLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_0_0.GetContract("rocketMinipoolManager", opts)
+		return rp.VersionManager.V1_0_0.GetContract("poolseaMinipoolManager", opts)
 	} else {
-		return rp.VersionManager.V1_0_0.GetContractWithAddress("rocketMinipoolManager", *address)
+		return rp.VersionManager.V1_0_0.GetContractWithAddress("poolseaMinipoolManager", *address)
 	}
 }

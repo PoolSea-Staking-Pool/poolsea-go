@@ -295,8 +295,8 @@ func getRocketMinipoolQueue(rp *rocketpool.RocketPool, address *common.Address, 
 	rocketMinipoolQueueLock.Lock()
 	defer rocketMinipoolQueueLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_1_0.GetContract("rocketMinipoolQueue", opts)
+		return rp.VersionManager.V1_1_0.GetContract("poolseaMinipoolQueue", opts)
 	} else {
-		return rp.VersionManager.V1_1_0.GetContractWithAddress("rocketMinipoolQueue", *address)
+		return rp.VersionManager.V1_1_0.GetContractWithAddress("poolseaMinipoolQueue", *address)
 	}
 }

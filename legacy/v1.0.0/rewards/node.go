@@ -106,12 +106,12 @@ func CalculateLifetimeNodeRewards(rp *rocketpool.RocketPool, claimerAddress comm
 
 // Get the time that the user registered as a claimer
 func GetNodeRegistrationTime(rp *rocketpool.RocketPool, claimerAddress common.Address, opts *bind.CallOpts, legacyRocketRewardsPoolAddress *common.Address) (time.Time, error) {
-	return getClaimingContractUserRegisteredTime(rp, "rocketClaimNode", claimerAddress, opts, legacyRocketRewardsPoolAddress)
+	return getClaimingContractUserRegisteredTime(rp, "poolseaClaimNode", claimerAddress, opts, legacyRocketRewardsPoolAddress)
 }
 
 // Get the total rewards claimed for this claiming contract this interval
 func GetNodeTotalClaimed(rp *rocketpool.RocketPool, opts *bind.CallOpts, legacyRocketRewardsPoolAddress *common.Address) (*big.Int, error) {
-	return getClaimingContractTotalClaimed(rp, "rocketClaimNode", opts, legacyRocketRewardsPoolAddress)
+	return getClaimingContractTotalClaimed(rp, "poolseaClaimNode", opts, legacyRocketRewardsPoolAddress)
 }
 
 // Get contracts
@@ -121,8 +121,8 @@ func getRocketClaimNode(rp *rocketpool.RocketPool, address *common.Address, opts
 	rocketClaimNodeLock.Lock()
 	defer rocketClaimNodeLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_0_0.GetContract("rocketClaimNode", opts)
+		return rp.VersionManager.V1_0_0.GetContract("poolseaClaimNode", opts)
 	} else {
-		return rp.VersionManager.V1_0_0.GetContractWithAddress("rocketClaimNode", *address)
+		return rp.VersionManager.V1_0_0.GetContractWithAddress("poolseaClaimNode", *address)
 	}
 }

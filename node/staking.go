@@ -221,5 +221,5 @@ var rocketNodeStakingLock sync.Mutex
 func getRocketNodeStaking(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketNodeStakingLock.Lock()
 	defer rocketNodeStakingLock.Unlock()
-	return rp.GetContract("rocketNodeStaking", opts)
+	return rp.GetContract("poolseaNodeStaking", opts)
 }

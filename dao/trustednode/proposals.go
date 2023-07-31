@@ -306,5 +306,5 @@ var rocketDAONodeTrustedProposalsLock sync.Mutex
 func getRocketDAONodeTrustedProposals(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketDAONodeTrustedProposalsLock.Lock()
 	defer rocketDAONodeTrustedProposalsLock.Unlock()
-	return rp.GetContract("rocketDAONodeTrustedProposals", opts)
+	return rp.GetContract("poolseaDAONodeTrustedProposals", opts)
 }

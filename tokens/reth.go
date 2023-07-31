@@ -207,5 +207,5 @@ var rocketTokenRETHLock sync.Mutex
 func getRocketTokenRETH(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketTokenRETHLock.Lock()
 	defer rocketTokenRETHLock.Unlock()
-	return rp.GetContract("rocketTokenRETH", opts)
+	return rp.GetContract("poolseaTokenRETH", opts)
 }

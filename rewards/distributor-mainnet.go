@@ -86,5 +86,5 @@ var rocketDistributorMainnetLock sync.Mutex
 func getRocketDistributorMainnet(rp *rocketpool.RocketPool, opts *bind.CallOpts) (*rocketpool.Contract, error) {
 	rocketDistributorMainnetLock.Lock()
 	defer rocketDistributorMainnetLock.Unlock()
-	return rp.GetContract("rocketMerkleDistributorMainnet", opts)
+	return rp.GetContract("poolseaMerkleDistributorMainnet", opts)
 }

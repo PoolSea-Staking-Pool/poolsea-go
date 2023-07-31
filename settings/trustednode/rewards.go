@@ -12,7 +12,7 @@ import (
 
 // Config
 const (
-	RewardsSettingsContractName string = "rocketDAONodeTrustedSettingsRewards"
+	RewardsSettingsContractName string = "poolseaDAONodeTrustedSettingsRewards"
 	NetworkEnabledPath          string = "rewards.network.enabled"
 )
 

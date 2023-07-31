@@ -91,7 +91,7 @@ func GetNodeOperatorRewardsPercent(rp *rocketpool.RocketPool, opts *bind.CallOpt
 		return nil, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimNode"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimNode"); err != nil {
 		return nil, fmt.Errorf("Could not get node operator rewards percent: %w", err)
 	}
 	return *perc, nil
@@ -104,7 +104,7 @@ func GetTrustedNodeOperatorRewardsPercent(rp *rocketpool.RocketPool, opts *bind.
 		return nil, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimTrustedNode"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimTrustedNode"); err != nil {
 		return nil, fmt.Errorf("Could not get trusted node operator rewards percent: %w", err)
 	}
 	return *perc, nil
@@ -117,7 +117,7 @@ func GetProtocolDaoRewardsPercent(rp *rocketpool.RocketPool, opts *bind.CallOpts
 		return nil, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimDAO"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimDAO"); err != nil {
 		return nil, fmt.Errorf("Could not get protocol DAO rewards percent: %w", err)
 	}
 	return *perc, nil
@@ -233,7 +233,7 @@ func GetRewardSnapshotEvent(rp *rocketpool.RocketPool, index uint64, intervalSiz
 func GetRewardSnapshotEventWithUpgrades(rp *rocketpool.RocketPool, index uint64, intervalSize *big.Int, startBlock *big.Int, endBlock *big.Int, rocketRewardsPoolAddresses []common.Address, opts *bind.CallOpts) (bool, RewardsEvent, error) {
 
 	if len(rocketRewardsPoolAddresses) == 0 {
-		return false, RewardsEvent{}, fmt.Errorf("rocketRewardsPoolAddresses must have at least one element.")
+		return false, RewardsEvent{}, fmt.Errorf("poolseaRewardsPoolAddresses must have at least one element.")
 	}
 
 	// Get contracts
@@ -299,8 +299,8 @@ func getRocketRewardsPool(rp *rocketpool.RocketPool, address *common.Address, op
 	rocketRewardsPoolLock.Lock()
 	defer rocketRewardsPoolLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_1_0_RC1.GetContract("rocketRewardsPool", opts)
+		return rp.VersionManager.V1_1_0_RC1.GetContract("poolseaRewardsPool", opts)
 	} else {
-		return rp.VersionManager.V1_1_0_RC1.GetContractWithAddress("rocketRewardsPool", *address)
+		return rp.VersionManager.V1_1_0_RC1.GetContractWithAddress("poolseaRewardsPool", *address)
 	}
 }

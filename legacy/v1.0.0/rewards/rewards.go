@@ -124,7 +124,7 @@ func GetNodeOperatorRewardsPercent(rp *rocketpool.RocketPool, opts *bind.CallOpt
 		return 0, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimNode"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimNode"); err != nil {
 		return 0, fmt.Errorf("Could not get node operator rewards percent: %w", err)
 	}
 	return eth.WeiToEth(*perc), nil
@@ -137,7 +137,7 @@ func GetTrustedNodeOperatorRewardsPercent(rp *rocketpool.RocketPool, opts *bind.
 		return 0, err
 	}
 	perc := new(*big.Int)
-	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "rocketClaimTrustedNode"); err != nil {
+	if err := rocketRewardsPool.Call(opts, perc, "getClaimingContractPerc", "poolseaClaimTrustedNode"); err != nil {
 		return 0, fmt.Errorf("Could not get trusted node operator rewards percent: %w", err)
 	}
 	return eth.WeiToEth(*perc), nil
@@ -150,8 +150,8 @@ func getRocketRewardsPool(rp *rocketpool.RocketPool, address *common.Address, op
 	rocketRewardsPoolLock.Lock()
 	defer rocketRewardsPoolLock.Unlock()
 	if address == nil {
-		return rp.VersionManager.V1_0_0.GetContract("rocketRewardsPool", opts)
+		return rp.VersionManager.V1_0_0.GetContract("poolseaRewardsPool", opts)
 	} else {
-		return rp.VersionManager.V1_0_0.GetContractWithAddress("rocketRewardsPool", *address)
+		return rp.VersionManager.V1_0_0.GetContractWithAddress("poolseaRewardsPool", *address)
 	}
 }
