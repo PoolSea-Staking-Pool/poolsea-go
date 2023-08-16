@@ -1,2 +1,2 @@
-# rocketpool-go
-A Golang library for interacting with the Rocket Pool network.
+# poolsea-go
+A Golang library for interacting with the Poolsea network.
