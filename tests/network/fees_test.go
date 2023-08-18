@@ -4,11 +4,11 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/deposit"
-	"github.com/RedDuck-Software/poolsea-go/network"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/deposit"
+	"github.com/Seb369888/poolsea-go/network"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
 )
 
 func TestNodeFee(t *testing.T) {

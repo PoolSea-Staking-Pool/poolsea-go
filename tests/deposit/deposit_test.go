@@ -3,13 +3,13 @@ package deposit
 import (
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/deposit"
-	"github.com/RedDuck-Software/poolsea-go/node"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/deposit"
+	"github.com/Seb369888/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/Seb369888/poolsea-go/tests/testutils/minipool"
 )
 
 func TestDeposit(t *testing.T) {

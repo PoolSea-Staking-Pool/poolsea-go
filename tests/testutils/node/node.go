@@ -3,14 +3,14 @@ package node
 import (
 	"fmt"
 
-	trustednodedao "github.com/RedDuck-Software/poolsea-go/dao/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/node"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	trustednodesettings "github.com/RedDuck-Software/poolsea-go/settings/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
+	trustednodedao "github.com/Seb369888/poolsea-go/dao/trustednode"
+	"github.com/Seb369888/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	trustednodesettings "github.com/Seb369888/poolsea-go/settings/trustednode"
+	"github.com/Seb369888/poolsea-go/tokens"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	rplutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/rpl"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	rplutils "github.com/Seb369888/poolsea-go/tests/testutils/tokens/rpl"
 )
 
 // Trusted node counter

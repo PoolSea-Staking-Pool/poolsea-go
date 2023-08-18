@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/types"
+	"github.com/Seb369888/poolsea-go/settings/trustednode"
+	"github.com/Seb369888/poolsea-go/types"
 
-	"github.com/RedDuck-Software/poolsea-go/minipool"
-	"github.com/RedDuck-Software/poolsea-go/node"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/minipool"
+	"github.com/Seb369888/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/validator"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/Seb369888/poolsea-go/tests/testutils/minipool"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
+	"github.com/Seb369888/poolsea-go/tests/testutils/validator"
 )
 
 func TestMinipoolDetails(t *testing.T) {

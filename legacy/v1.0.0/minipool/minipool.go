@@ -9,8 +9,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	rptypes "github.com/RedDuck-Software/poolsea-go/types"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	rptypes "github.com/Seb369888/poolsea-go/types"
 )
 
 // Settings

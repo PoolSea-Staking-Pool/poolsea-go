@@ -2,14 +2,14 @@ package rewards
 
 import (
 	"context"
-	"github.com/RedDuck-Software/poolsea-go/rewards"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/rewards"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/tokens"
 	"math/big"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
 )
 
 func TestTrustedNodeRewards(t *testing.T) {

@@ -8,13 +8,13 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/RedDuck-Software/poolsea-go/minipool"
-	"github.com/RedDuck-Software/poolsea-go/node"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/utils"
+	"github.com/Seb369888/poolsea-go/minipool"
+	"github.com/Seb369888/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/utils"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/validator"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	"github.com/Seb369888/poolsea-go/tests/testutils/validator"
 )
 
 var salt int64 = 0

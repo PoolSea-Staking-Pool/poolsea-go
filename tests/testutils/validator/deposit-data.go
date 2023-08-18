@@ -3,12 +3,10 @@ package validator
 import (
 	"fmt"
 
+	"github.com/Seb369888/poolsea-go/types"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/prysmaticlabs/go-ssz"
 
-	"github.com/RedDuck-Software/poolsea-go/types"
-
-	"github.com/RedDuck-Software/poolsea-go/tests"
+	"github.com/Seb369888/poolsea-go/tests"
 )
 
 // Deposit settings

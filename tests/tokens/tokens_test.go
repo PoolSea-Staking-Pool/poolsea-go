@@ -4,12 +4,12 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/tokens"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	rethutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/reth"
-	rplutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/rpl"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	rethutils "github.com/Seb369888/poolsea-go/tests/testutils/tokens/reth"
+	rplutils "github.com/Seb369888/poolsea-go/tests/testutils/tokens/rpl"
 )
 
 func TestTokenBalances(t *testing.T) {

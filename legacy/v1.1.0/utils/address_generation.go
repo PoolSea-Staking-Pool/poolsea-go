@@ -5,9 +5,9 @@ import (
 	"math/big"
 	"sync"
 
-	v110_minipool "github.com/RedDuck-Software/poolsea-go/legacy/v1.1.0/minipool"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	rptypes "github.com/RedDuck-Software/poolsea-go/types"
+	v110_minipool "github.com/Seb369888/poolsea-go/legacy/v1.1.0/minipool"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	rptypes "github.com/Seb369888/poolsea-go/types"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"

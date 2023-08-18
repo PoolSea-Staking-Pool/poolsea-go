@@ -10,7 +10,7 @@ import (
 	"github.com/princjef/gomarkdoc/logger"
 )
 
-const repo string = "https://github.com/RedDuck-Software/poolsea-go"
+const repo string = "https://github.com/Seb369888/poolsea-go"
 const branch string = "release"
 
 func main() {

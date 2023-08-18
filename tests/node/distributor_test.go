@@ -1,10 +1,10 @@
 package node
 
 import (
-	"github.com/RedDuck-Software/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/node"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
 )
 
 func TestNodeDistributor(t *testing.T) {

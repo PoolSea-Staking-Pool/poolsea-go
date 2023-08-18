@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/deposit"
-	"github.com/RedDuck-Software/poolsea-go/minipool"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/deposit"
+	"github.com/Seb369888/poolsea-go/minipool"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/settings/trustednode"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/Seb369888/poolsea-go/tests/testutils/minipool"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
 )
 
 // Create an amount of slashed RPL in the auction contract

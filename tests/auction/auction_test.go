@@ -4,17 +4,17 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
+	"github.com/Seb369888/poolsea-go/settings/trustednode"
 
-	"github.com/RedDuck-Software/poolsea-go/auction"
-	"github.com/RedDuck-Software/poolsea-go/network"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/auction"
+	"github.com/Seb369888/poolsea-go/network"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	auctionutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/auction"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	auctionutils "github.com/Seb369888/poolsea-go/tests/testutils/auction"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
 )
 
 func TestAuctionDetails(t *testing.T) {

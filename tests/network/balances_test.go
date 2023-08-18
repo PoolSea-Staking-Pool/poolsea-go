@@ -3,11 +3,11 @@ package network
 import (
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/network"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/network"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
 )
 
 func TestSubmitBalances(t *testing.T) {

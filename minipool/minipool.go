@@ -10,9 +10,9 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/types"
-	rptypes "github.com/RedDuck-Software/poolsea-go/types"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/types"
+	rptypes "github.com/Seb369888/poolsea-go/types"
 )
 
 // Settings

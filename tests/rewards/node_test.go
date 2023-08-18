@@ -6,15 +6,15 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/deposit"
-	"github.com/RedDuck-Software/poolsea-go/node"
-	"github.com/RedDuck-Software/poolsea-go/rewards"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/settings/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	minipoolutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/minipool"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/deposit"
+	"github.com/Seb369888/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/rewards"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/settings/trustednode"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	minipoolutils "github.com/Seb369888/poolsea-go/tests/testutils/minipool"
+	"github.com/Seb369888/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 )
 
 func TestNodeRewards(t *testing.T) {

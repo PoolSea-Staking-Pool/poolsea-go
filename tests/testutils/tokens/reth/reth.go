@@ -3,11 +3,11 @@ package tokens
 import (
 	"math/big"
 
-	"github.com/RedDuck-Software/poolsea-go/deposit"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/deposit"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/tokens"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
 )
 
 // Mint an amount of rETH to an account

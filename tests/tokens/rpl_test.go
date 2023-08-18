@@ -6,12 +6,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	rplutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/rpl"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	rplutils "github.com/Seb369888/poolsea-go/tests/testutils/tokens/rpl"
 )
 
 func TestRPLBalances(t *testing.T) {

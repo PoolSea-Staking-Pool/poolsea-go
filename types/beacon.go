@@ -5,7 +5,7 @@ import (
 
 	"encoding/hex"
 
-	"github.com/RedDuck-Software/poolsea-go/utils/json"
+	"github.com/Seb369888/poolsea-go/utils/json"
 )
 
 // Validator pubkey

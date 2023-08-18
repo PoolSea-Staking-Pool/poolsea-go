@@ -5,13 +5,13 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/RedDuck-Software/poolsea-go/network"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/network"
+	"github.com/Seb369888/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
-	rethutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/reth"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
+	rethutils "github.com/Seb369888/poolsea-go/tests/testutils/tokens/reth"
 )
 
 // GetRETHContractETHBalance test under minipool.TestWithdrawValidatorBalance

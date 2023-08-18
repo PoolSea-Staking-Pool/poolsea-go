@@ -3,10 +3,10 @@ package protocol
 import (
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
 )
 
 func TestDepositSettings(t *testing.T) {

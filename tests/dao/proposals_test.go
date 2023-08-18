@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/RedDuck-Software/poolsea-go/dao"
-	trustednodedao "github.com/RedDuck-Software/poolsea-go/dao/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/node"
-	trustednodesettings "github.com/RedDuck-Software/poolsea-go/settings/trustednode"
-	rptypes "github.com/RedDuck-Software/poolsea-go/types"
+	"github.com/Seb369888/poolsea-go/dao"
+	trustednodedao "github.com/Seb369888/poolsea-go/dao/trustednode"
+	"github.com/Seb369888/poolsea-go/node"
+	trustednodesettings "github.com/Seb369888/poolsea-go/settings/trustednode"
+	rptypes "github.com/Seb369888/poolsea-go/types"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
 )
 
 func TestProposalDetails(t *testing.T) {

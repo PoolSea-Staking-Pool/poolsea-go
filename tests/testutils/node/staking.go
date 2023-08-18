@@ -3,12 +3,12 @@ package node
 import (
 	"math/big"
 
-	"github.com/RedDuck-Software/poolsea-go/node"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/tokens"
+	"github.com/Seb369888/poolsea-go/node"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/tokens"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	rplutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/tokens/rpl"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	rplutils "github.com/Seb369888/poolsea-go/tests/testutils/tokens/rpl"
 )
 
 // Mint & stake an amount of RPL against a node

@@ -8,12 +8,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
-	"github.com/RedDuck-Software/poolsea-go/utils"
+	"github.com/Seb369888/poolsea-go/tests"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
+	"github.com/Seb369888/poolsea-go/utils"
 )
 
 func TestSendTransaction(t *testing.T) {

@@ -3,7 +3,7 @@ package evm
 import (
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/RedDuck-Software/poolsea-go/tests"
+	"github.com/Seb369888/poolsea-go/tests"
 )
 
 // Mine a number of blocks

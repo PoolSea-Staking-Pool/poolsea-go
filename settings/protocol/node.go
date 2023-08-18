@@ -8,9 +8,9 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 
-	protocoldao "github.com/RedDuck-Software/poolsea-go/dao/protocol"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	protocoldao "github.com/Seb369888/poolsea-go/dao/protocol"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 )
 
 // Config

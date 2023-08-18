@@ -8,18 +8,18 @@ import (
 	"sync"
 	"time"
 
-	"github.com/RedDuck-Software/poolsea-go/dao/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/dao/trustednode"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
 	"gonum.org/v1/gonum/mathext"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/storage"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
-	"github.com/RedDuck-Software/poolsea-go/utils/strings"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/storage"
+	"github.com/Seb369888/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/utils/strings"
 )
 
 // Settings

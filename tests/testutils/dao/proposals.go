@@ -1,14 +1,14 @@
 package dao
 
 import (
-	"github.com/RedDuck-Software/poolsea-go/dao"
-	trustednodedao "github.com/RedDuck-Software/poolsea-go/dao/trustednode"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	trustednodesettings "github.com/RedDuck-Software/poolsea-go/settings/trustednode"
-	rptypes "github.com/RedDuck-Software/poolsea-go/types"
+	"github.com/Seb369888/poolsea-go/dao"
+	trustednodedao "github.com/Seb369888/poolsea-go/dao/trustednode"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	trustednodesettings "github.com/Seb369888/poolsea-go/settings/trustednode"
+	rptypes "github.com/Seb369888/poolsea-go/types"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/evm"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	"github.com/Seb369888/poolsea-go/tests/testutils/evm"
 )
 
 // Pass and execute a proposal

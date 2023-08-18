@@ -8,15 +8,15 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/RedDuck-Software/poolsea-go/minipool"
-	"github.com/RedDuck-Software/poolsea-go/network"
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/minipool"
+	"github.com/Seb369888/poolsea-go/network"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	nodeutils "github.com/RedDuck-Software/poolsea-go/tests/testutils/node"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/validator"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	nodeutils "github.com/Seb369888/poolsea-go/tests/testutils/node"
+	"github.com/Seb369888/poolsea-go/tests/testutils/validator"
 )
 
 // Minipool created event

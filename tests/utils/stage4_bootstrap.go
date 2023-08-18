@@ -3,10 +3,10 @@ package utils
 import (
 	"time"
 
-	"github.com/RedDuck-Software/poolsea-go/rocketpool"
-	"github.com/RedDuck-Software/poolsea-go/settings/protocol"
-	"github.com/RedDuck-Software/poolsea-go/tests/testutils/accounts"
-	"github.com/RedDuck-Software/poolsea-go/utils/eth"
+	"github.com/Seb369888/poolsea-go/rocketpool"
+	"github.com/Seb369888/poolsea-go/settings/protocol"
+	"github.com/Seb369888/poolsea-go/tests/testutils/accounts"
+	"github.com/Seb369888/poolsea-go/utils/eth"
 )
 
 // Bootstrap all of the parameters to mimic Stage 4 so the unit tests work correctly
